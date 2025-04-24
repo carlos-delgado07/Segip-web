@@ -16,23 +16,39 @@
                         </svg>
 
                         <p class="verificado-text text-success font-weight-bold" style="font-size: 20px;">✅ Verificado exitosamente</p>
+                        <p><strong>Nombres:</strong> {{ $response['usuario']['nombre'] }}</p>
+                        <p><strong>Apellidos:</strong> {{ $response['usuario']['apellido'] }}</p>
 
-                        <h5 class="mt-4">Usuario encontrado:</h5>
-                        <p><strong>Nombre:</strong> {{ $response['usuario']['nombre'] }} {{ $response['usuario']['apellido'] }}</p>
-                        <p><strong>Email:</strong> {{ $response['usuario']['email'] }}</p>
+                        {{-- Aviso si ya generó ficha --}}
+                        @if(session('mensaje'))
+                            <div class="alert alert-warning mt-4">
+                                {{ session('mensaje') }}
+                                <br>
+                                <a href="{{ route('dashboard') }}" class="btn btn-outline-warning btn-sm mt-2">Volver al Panel</a>
+                            </div>
+                        @else
+                            {{-- Botón para generar ficha --}}
+                            <form action="{{ route('ficha.generar') }}" method="POST" class="mt-4">
+                                @csrf
+                                <input type="hidden" name="nombres" value="{{ $response['usuario']['nombre'] }}">
+                                <input type="hidden" name="apellidos" value="{{ $response['usuario']['apellido'] }}">
+                                <button type="submit" class="btn btn-success btn-lg btn-block">Generar Ficha</button>
+                            </form>
+                        @endif
 
                     @else
+                        {{-- Si hubo error --}}
                         <p class="text-danger mt-4"><strong>Error:</strong> {{ $response['error'] ?? 'Algo salió mal' }}</p>
-                    @endif
 
-                    <a href="{{ route('imagen.form') }}" class="btn btn-primary mt-4">Volver a intentarlo</a>
+                        <a href="{{ route('imagen.form') }}" class="btn btn-primary mt-4">Volver a intentarlo</a>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-{{-- Animaciones con estilos inline para evitar conflicto --}}
+{{-- Animaciones --}}
 <style>
     @keyframes draw-circle {
         0% { stroke-dashoffset: 240; }

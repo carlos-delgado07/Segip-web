@@ -9,7 +9,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/verificar">
                 <i class="ti-trello menu-icon"></i>
-                <span class="menu-title">Verificacion</span>
+                <span class="menu-title">Solicitar Ficha</span>
             </a>
         </li>
     </ul>
