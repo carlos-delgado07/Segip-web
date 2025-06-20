@@ -22,7 +22,6 @@ Route::get('/ficha/{codigo}', [FichaController::class, 'verFicha'])->name('ficha
 
 
 
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -36,4 +35,5 @@ Route::middleware([
 
     // Generar ficha (una vez verificado)
     Route::post('/generar-ficha', [FichaController::class, 'generarFicha'])->name('ficha.generar');
+    Route::get('/ficha', [FichaController::class, 'mostrarFichaUsuario'])->name('ficha.mostrar');
 });

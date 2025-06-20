@@ -12,6 +12,12 @@
                 <span class="menu-title">Solicitar Ficha</span>
             </a>
         </li>
+                <li class="nav-item">
+            <a class="nav-link" href="/ficha">
+                <i class="ti-trello menu-icon"></i>
+                <span class="menu-title">Ver mi ficha</span>
+            </a>
+        </li>
     </ul>
 </nav>
 

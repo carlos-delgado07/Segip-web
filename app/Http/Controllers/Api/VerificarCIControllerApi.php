@@ -48,7 +48,7 @@ class VerificarCIControllerApi extends Controller
         $client = new Client();
         try {
             // Enviamos la solicitud POST a Flask
-            $response = $client->post('http://13.218.242.22/verificar', [
+            $response = $client->post('http://localhost:5000/verificar', [
                 'json' => $data // Enviamos el cuerpo en formato JSON
             ]);
 

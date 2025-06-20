@@ -16,8 +16,8 @@
                         </svg>
 
                         <p class="verificado-text text-success font-weight-bold" style="font-size: 20px;">✅ Verificado exitosamente</p>
-                        <p><strong>Nombres:</strong> {{ $response['usuario']['nombre'] }}</p>
-                        <p><strong>Apellidos:</strong> {{ $response['usuario']['apellido'] }}</p>
+                        <p><strong>Nombres:</strong> {{ $response['usuario']['nombres'] }}</p>
+                        <p><strong>Apellidos:</strong> {{ $response['usuario']['apellidos'] }}</p>
 
                         {{-- Aviso si ya generó ficha --}}
                         @if(session('mensaje'))
@@ -30,8 +30,8 @@
                             {{-- Botón para generar ficha --}}
                             <form action="{{ route('ficha.generar') }}" method="POST" class="mt-4">
                                 @csrf
-                                <input type="hidden" name="nombres" value="{{ $response['usuario']['nombre'] }}">
-                                <input type="hidden" name="apellidos" value="{{ $response['usuario']['apellido'] }}">
+                                <input type="hidden" name="nombres" value="{{ $response['usuario']['nombres'] }}">
+                                <input type="hidden" name="apellidos" value="{{ $response['usuario']['apellidos'] }}">
                                 <button type="submit" class="btn btn-success btn-lg btn-block">Generar Ficha</button>
                             </form>
                         @endif
