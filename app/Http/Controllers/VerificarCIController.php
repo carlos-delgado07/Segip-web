@@ -35,7 +35,7 @@ class VerificarCIController extends Controller
         $client = new Client();
 
         try {
-            $response = $client->post('http://localhost:5000/verificar', [
+            $response = $client->post('http://13.218.242.22/verificar', [
                 'json' => $data
             ]);
 
