@@ -16,6 +16,10 @@
             <a class="nav-link" href="/ficha">
                 <i class="ti-trello menu-icon"></i>
                 <span class="menu-title">Ver mi ficha</span>
+        <li class="nav-item">
+            <a class="nav-link" href="/solicitud_brigada">
+                <i class="ti-trello menu-icon"></i>
+                <span class="menu-title">Ver Solicitudes Brigada</span>
             </a>
         </li>
     </ul>

@@ -8,20 +8,27 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('fichas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            
             $table->date('fecha');
             $table->time('hora');
             $table->integer('ventanilla');
-            $table->string('codigo')->unique();
+            
 
             // 👇 Campos adicionales
             $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();
+            $table->unsignedBigInteger('ciudadano_id');
+            $table->unsignedBigInteger('funcionario_id'); // Funcionario que atendió la ficha
+            $table->unsignedBigInteger('sucursal_id'); // Sucursal donde se generó la ficha
+            $table->unsignedBigInteger('ventanilla_id'); // Ventanilla asignada
+            $table->unsignedBigInteger('servicio_id'); // Servicio asociado a la ficha
+            $table->string('estado')->default('pendiente'); // Estados posibles: pendiente, atendida, cancelada
+            $table->string('codigo')->unique();
 
             $table->timestamps();
 
-            $table->unique(['user_id', 'fecha']); // Una ficha por día
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unique(['ciudadano_id', 'fecha']); // Una ficha por día
+            $table->foreign('ciudadano_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

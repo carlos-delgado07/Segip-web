@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VerificarCIController;
 use App\Http\Controllers\FichaController;
-
-
+use App\Http\Controllers\SolicitudBrigada;
 
 // Página de bienvenida
 Route::get('/', function () {
@@ -36,4 +35,5 @@ Route::middleware([
     // Generar ficha (una vez verificado)
     Route::post('/generar-ficha', [FichaController::class, 'generarFicha'])->name('ficha.generar');
     Route::get('/ficha', [FichaController::class, 'mostrarFichaUsuario'])->name('ficha.mostrar');
+    Route::get(('solicitud_brigada'),[SolicitudBrigada::class,'index'])->name('solicitud_brigada.index');
 });
