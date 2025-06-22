@@ -12,7 +12,7 @@ class Ventanilla extends Model
         'nombre',
         'estado',
         'sucursal_id',
-        'servicio_id',
+        'user_id',        
     ];
 
     public function sucursal()

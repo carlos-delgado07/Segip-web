@@ -12,4 +12,10 @@ class Municipio extends Model
         'nombre',
     ];
     
+    public function sucursales()
+    {
+        return $this->hasMany(Sucursal::class, 'municipio_id');
+    }
+    
+    
 }

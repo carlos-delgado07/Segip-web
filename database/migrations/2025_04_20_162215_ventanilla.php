@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sucursal', function (Blueprint $table) {
+        Schema::create('ventanilla', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('direccion');
-            $table->string('telefono')->nullable();            
+            $table->foreignId('sucursal_id')->constrained('sucursal')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->string('estado')->default('disponible'); //
+            // Estados posibles: disponible, fuera de servicio
+            
             $table->timestamps();
         });
-
     }
 
     /**

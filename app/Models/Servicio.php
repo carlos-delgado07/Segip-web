@@ -10,6 +10,7 @@ class Servicio extends Model
 
     protected $fillable = [
         'nombre',
+        'tiempo_estimado',
     ];
 
     

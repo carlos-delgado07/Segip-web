@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ventanilla_servicio', function (Blueprint $table) {
+        Schema::create('servicio', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ventanilla_id')->constrained('ventanilla')->onDelete('cascade');
-            $table->foreignId('servicio_id')->constrained('servicio')->onDelete('cascade');
+            $table->string('nombre');      
+            $table->integer('tiempo_estimado'); // Tiempo estimado en minutos
             $table->timestamps();
         });
+        
     }
 
     /**
