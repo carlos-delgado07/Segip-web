@@ -9,12 +9,12 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-admin" aria-expanded="false" aria-controls="ui-admin">
                 <i class="ti-settings menu-icon"></i>
                 <span class="menu-title">Administración</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="ui-admin">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.users.index') }}">Usuarios</a>
@@ -34,32 +34,46 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-fichas" aria-expanded="false" aria-controls="ui-fichas">
+                <i class="ti-settings menu-icon"></i>
+                <span class="menu-title">Fichas</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-fichas">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CI</a>
+                    </li>                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">                            
+                            <span class="menu-title">Licencias de Conducir</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ficha">                            
+                            <span class="menu-title">Ver mi ficha</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
 
         <li class="nav-item">
             <a class="nav-link" href="/verificar">
                 <i class="ti-trello menu-icon"></i>
                 <span class="menu-title">Solicitar Ficha</span>
             </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ficha">
-                <i class="ti-trello menu-icon"></i>
-                <span class="menu-title">Ver mi ficha</span>
-            </a>
-        </li>
+        </li>        
         <li class="nav-item">
             <a class="nav-link" href="/solicitud_brigada">
                 <i class="ti-trello menu-icon"></i>
                 <span class="menu-title">Ver Solicitudes Brigada</span>
             </a>
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="/nueva_ficha">
-                <i class="icon-paper menu-icon"></i>
-                <span class="menu-title">Solicitar Nueva Ficha</span>
-            </a>
-        </li>
+       
     </ul>
 </nav>
 

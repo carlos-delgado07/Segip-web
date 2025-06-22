@@ -147,8 +147,5 @@ class FichaController extends Controller
             return view('ficha');
         }
     }
-    public function nuevaFicha()
-    {
-        return view('nueva_ficha');
-    }
+    
 }

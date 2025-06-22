@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
-{
+{    
     public function index()
     {
         $users = User::with('roles')->get();
@@ -51,7 +51,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user->update($request->only('name', 'email','roles'));
+        $user->update($request->only('name', 'email', 'roles'));
 
         if ($request->password) {
             $user->update(['password' => Hash::make($request->password)]);
