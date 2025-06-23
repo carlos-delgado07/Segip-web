@@ -7,20 +7,19 @@ use App\Http\Controllers\SolicitudBrigada;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ServicioController;
 use App\Http\Controllers\Admin\SucursalController;
+use App\Http\Controllers\FichaDepositoController;
 
 // Página de bienvenida
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn() => view('welcome'));
 
 // Verificación de CI (sin autenticación)
 Route::get('/verificar', [VerificarCIController::class, 'showForm'])->name('imagen.form');
 Route::post('/verificar', [VerificarCIController::class, 'compararImagen'])->name('imagen.comparar');
 
 // Ficha pública (por código, sin login)
-Route::get('/ficha/{codigo}', [FichaController::class, 'verFicha'])->name('ficha.ver');
+Route::get('/ficha/ver/{codigo}', [FichaController::class, 'verFicha'])->name('ficha.ver');
 
-// Rutas protegidas por autenticación y verificación
+// Rutas protegidas por autenticación
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
     // Panel principal
@@ -34,7 +33,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // Solicitudes brigada
     Route::get('/solicitud_brigada', [SolicitudBrigada::class, 'index'])->name('solicitud_brigada.index');
 
-    // Administración (usuarios y servicios)
+    // Ficha con imagen de depósito
+    Route::get('/ficha/solicitar', [FichaDepositoController::class, 'form'])->name('ficha.solicitar');
+    Route::post('/ficha/solicitar', [FichaDepositoController::class, 'store'])->name('ficha.store');
+    Route::get('/ficha/detalle/{codigo}', [FichaDepositoController::class, 'ver'])->name('ficha.detalle');
+
+    // Administración
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('servicios', ServicioController::class);

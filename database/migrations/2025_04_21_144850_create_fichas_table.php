@@ -11,7 +11,7 @@ return new class extends Migration {
             
             $table->date('fecha');
             $table->time('hora');
-            $table->integer('ventanilla');
+            $table->string('ventanilla')->nullable(); // Ventanilla asignada, puede ser null si no se asigna
             
 
             // 👇 Campos adicionales

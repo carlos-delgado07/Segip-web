@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ficha;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -92,7 +93,7 @@ class FichaController extends Controller
 
     public function verFicha($codigo)
     {
-        $ficha = Ficha::where('codigo', $codigo)->firstOrFail();
+        $ficha = Ficha::with('sucursal')->where('codigo', $codigo)->firstOrFail();
 
         $builder = new Builder(
             writer: new PngWriter(),
@@ -104,27 +105,23 @@ class FichaController extends Controller
         );
 
         $qrResult = $builder->build();
-
-        // 🔧 CORREGIDO: Guardar en el disco "public"
         $qrPath = 'qr/ficha_' . $ficha->codigo . '.png';
         Storage::disk('public')->put($qrPath, $qrResult->getString());
 
-        // 🌐 URL pública del QR
         $qrUrl = asset('storage/' . $qrPath);
 
         return view('ficha_publica', compact('ficha', 'qrUrl'));
     }
 
+
     public function mostrarFichaUsuario()
     {
         $user = Auth::user();
 
-        // Buscar ficha para el día siguiente (fecha que usas para generar ficha)
-        $fechaBusqueda = now()->addDay()->toDateString();
-
         $ficha = Ficha::where('user_id', $user->id)
-            ->whereDate('fecha', $fechaBusqueda)
+            ->orderByDesc('fecha')
             ->first();
+
 
         if ($ficha) {
             // Generar QR base64 para mostrar en la vista
@@ -147,5 +144,17 @@ class FichaController extends Controller
             return view('ficha');
         }
     }
-    
+
+    public function formularioTramite()
+    {
+        $servicio = Servicio::where('nombre', 'like', '%Carnet de Identidad%')->first();
+
+        if (!$servicio) {
+            return back()->with('error', 'Servicio no disponible.');
+        }
+
+        $sucursales = $servicio->sucursales()->get();
+
+        return view('ficha.solicitar', compact('sucursales'));
+    }
 }

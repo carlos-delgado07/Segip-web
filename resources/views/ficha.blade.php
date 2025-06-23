@@ -14,8 +14,7 @@
                             ✅ Ficha generada correctamente
                         </p>
                         <div class="mt-4 text-left" style="font-size: 18px;">
-                            <p><strong>Nombres:</strong> {{ $ficha->nombres }}</p>
-                            <p><strong>Apellidos:</strong> {{ $ficha->apellidos }}</p>
+                            <p><strong>Nombres:</strong> {{ $ficha->nombres }}</p>                            
                             <p><strong>Fecha:</strong> {{ \Carbon\Carbon::parse($ficha->fecha)->format('d/m/Y') }}</p>
                             <p><strong>Hora:</strong> {{ $ficha->hora }}</p>
                             <p><strong>Ventanilla:</strong> {{ $ficha->ventanilla }}</p>

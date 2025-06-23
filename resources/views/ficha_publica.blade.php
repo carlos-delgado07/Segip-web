@@ -78,6 +78,8 @@
         <div class="dato"><strong>Fecha:</strong> {{ \Carbon\Carbon::parse($ficha->fecha)->format('d/m/Y') }}</div>
         <div class="dato"><strong>Hora:</strong> {{ $ficha->hora }}</div>
         <div class="dato"><strong>Ventanilla:</strong> {{ $ficha->ventanilla }}</div>
+        <div class="dato"><strong>Sucursal:</strong> {{ $ficha->sucursal->nombre }}</div>
+
         
         {{-- Código de la ficha --}}
         <div class="dato"><strong>Código:</strong></div>
