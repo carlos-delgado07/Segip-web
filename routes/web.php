@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ServicioController;
 use App\Http\Controllers\Admin\SucursalController;
 use App\Http\Controllers\FichaDepositoController;
+use App\Http\Controllers\DocumentoJudicialWebController; //nuevo
+use App\Http\Controllers\BrigadaSolicitudController;
 
 // Página de bienvenida
 Route::get('/', fn() => view('welcome'));
@@ -37,6 +39,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/ficha/solicitar', [FichaDepositoController::class, 'form'])->name('ficha.solicitar');
     Route::post('/ficha/solicitar', [FichaDepositoController::class, 'store'])->name('ficha.store');
     Route::get('/ficha/detalle/{codigo}', [FichaDepositoController::class, 'ver'])->name('ficha.detalle');
+
+Route::get('/documento/formulario', [DocumentoJudicialWebController::class, 'formulario'])->name('documento.formulario');
+Route::post('/documento/verificar', [DocumentoJudicialWebController::class, 'verificar'])->name('documento.verificar');
+
+Route::get('/brigada/solicitar', [BrigadaSolicitudController::class, 'create'])->name('brigada.create');
+Route::post('/brigada/solicitar', [BrigadaSolicitudController::class, 'store'])->name('brigada.store');
 
     // Administración
     Route::prefix('admin')->name('admin.')->group(function () {

@@ -66,6 +66,20 @@
                 <span class="menu-title">Solicitar Ficha</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/documento/formulario">
+                <i class="ti-trello menu-icon"></i>
+                <span class="menu-title">Documento Judicial</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/brigada/solicitar">
+                <i class="ti-trello menu-icon"></i>
+                <span class="menu-title">Solicitar Brigada</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="/solicitud_brigada">
                 <i class="ti-trello menu-icon"></i>
